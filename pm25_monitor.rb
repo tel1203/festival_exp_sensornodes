@@ -27,7 +27,7 @@ check_dir(dir)
 s = Sensor_pm25.new(ARGV[0], 10001)
 
 begin
-  data = make_data("pm2.5", ARGV[1], s.send_RD()[1])
+  data = make_data("pm25", ARGV[1], s.send_RD()[1])
   save_sensordata(data, dir)
 rescue
 end  
