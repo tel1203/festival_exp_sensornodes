@@ -11,7 +11,9 @@ ex: ruby pm25_monitor.rb 192.168.101.4 Maya /run/shm/sensor
 ruby barometer_monitor.rb [Location] [Data Dir]
 ex: ruby barometer_monitor.rb Maya /run/shm/sensor
 
-- node4
+- node4: accelerometer
+ruby accelerometer_monitor.rb [Location] [Data Dir]
+ex: ruby accelerometer_monitor.rb Maya /run/shm/sensor
 
 - node5
 
