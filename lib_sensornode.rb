@@ -3,6 +3,7 @@
 #   2016/04 Teruaki Yokoyama
 #
 
+require "fileutils"
 require "json"
 
 def check_dir(dir)
