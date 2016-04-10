@@ -1,9 +1,9 @@
 #
-# pm25_read.rb : getting measurement data about PM2.5 from Sinnei sensor
+# pm25_monitor.rb : getting measurement data about PM2.5 from Sinnei sensor
 #
 # Usage:
-#   $ ruby pm25_read.rb 192.168.101.3 Kameoka /run/shm
-#   $ ruby pm25_read.rb 192.168.101.4 Maya    /run/shm
+#   $ ruby pm25_monitor.rb 192.168.101.3 Kameoka /run/shm/sensor
+#   $ ruby pm25_monitor.rb 192.168.101.4 Maya    /run/shm/sensor
 #
 
 require "./lib_sinnei_pm25.rb"
