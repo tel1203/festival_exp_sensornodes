@@ -15,9 +15,7 @@ ex: ruby barometer_monitor.rb Maya /run/shm/sensor
 ruby accelerometer_monitor.rb [Location] [Data Dir]
 ex: ruby accelerometer_monitor.rb Maya /run/shm/sensor
 
-- node5
-
-- node6
-
 - node7
+ruby meshlium_monitor.rb [Location] [Data Dir] [Meshlium IP Addr] [DB user] [DB pw] [DB name]
+ex: ruby meshlium_monitor.rb Maya /run/shm/sensor 192.168.100.100 root libelium2007 MeshliumDB
 
