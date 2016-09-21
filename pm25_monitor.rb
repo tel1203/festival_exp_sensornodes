@@ -31,7 +31,7 @@ begin
   save_sensordata(data, dir)
 
   # MQTT publish
-  host = "festival.ckp.jp"
+  host = "210.156.3.153" # festival.ckp.jp
 #  host = "test.mosquitto.org"
   port = 1883
   value = data["value"]
