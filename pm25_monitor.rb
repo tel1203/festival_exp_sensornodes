@@ -29,6 +29,22 @@ s = Sensor_pm25.new(ARGV[0], 10001)
 begin
   data = make_data("pm25", ARGV[1], s.send_RD()[1])
   save_sensordata(data, dir)
+
+  # MQTT publish
+  host = "festival.ckp.jp"
+#  host = "test.mosquitto.org"
+  port = 1883
+  value = data["value"]
+  if (ARGV[1] == "Maya") then
+    topic = "stationsensors/stationsensors_MAYA/pm25"
+    mqtt_publish(host, port, topic, value)
+  end
+
+  if (ARGV[1] == "Kameoka") then
+    topic = "stationsensors/stationsensors_KAMEOKA/pm25"
+    mqtt_publish(host, port, topic, value)
+  end
+
 rescue
 end  
 
