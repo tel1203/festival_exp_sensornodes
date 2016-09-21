@@ -5,6 +5,7 @@
 
 require "fileutils"
 require "json"
+require "mqtt"
 
 def check_dir(dir)
   begin
@@ -37,4 +38,14 @@ def make_data(type, location, value)
 
   return (data)
 end
+
+def mqtt_publish(host, port, topic, message)
+  MQTT::Client.connect(host: host,
+                       port: port,
+                      ) do |client|
+    client.publish(topic, message)
+  end
+end
+# mqtt_publish("test.mosquitto.org", 1883, "test", "From Ruby!")
+# mqtt_publish("festival.ckp.jp", 1883, topic, value)
 

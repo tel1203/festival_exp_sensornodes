@@ -12,7 +12,7 @@ require "./lib_sensornode.rb"
 STDOUT.sync = true
 
 def save_lastdata(values)
-  f = open("meshlium_lastdata.txt", "w")
+  f = open("_meshlium_lastdata.txt", "w")
   f.puts(values.to_json)
   f.close
 end
@@ -84,6 +84,21 @@ if (values.size > 0) then
   data["measured_at"] = Time.now.to_i
   data["value"] = values
   save_sensordata(data, dir)
+
+  # MQTT publish
+  host = "festival.ckp.jp"
+#  host = "test.mosquitto.org"
+  port = 1883
+  value = data["value"]["IN_TEMP"][0]
+  topic = "stationsensors/stationsensors_MAYA/tempreture" if (ARGV[0] == "Maya")
+  topic = "stationsensors/stationsensors_KAMEOKA/tempreture" if (ARGV[0] == "Kameoka")
+  mqtt_publish(host, port, topic, value) if (topic != nil)
+
+  value = data["value"]["HUMB"][0]
+  topic = "stationsensors/stationsensors_MAYA/humidity" if (ARGV[0] == "Maya")
+  topic = "stationsensors/stationsensors_KAMEOKA/humidity" if (ARGV[0] == "Kameoka")
+  mqtt_publish(host, port, topic, value) if (topic != nil)
+
 end
 
 exit
