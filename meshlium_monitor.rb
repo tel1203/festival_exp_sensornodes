@@ -48,7 +48,7 @@ check_dir(dir)
 #my = Mysql.connect('192.168.100.100', 'root', 'libelium2007', 'MeshliumDB')
 my = Mysql.connect(ARGV[2], ARGV[3], ARGV[4], ARGV[5])
 
-target_sensor = ["BAT", "HUMB", "IN_TEMP", "LUM", "MCP", "TCA"]
+target_sensor = ["BAT", "HUMB", "HUMA", "IN_TEMP", "LUM", "MCP", "TCA"]
 #query = "select id,value,timestamp from sensorParser where sensor='MCP' order by id desc limit 1"
 query = "select * from last_data"
 result = my.query(query)
@@ -89,15 +89,25 @@ if (values.size > 0) then
   host = "festival.ckp.jp"
 #  host = "test.mosquitto.org"
   port = 1883
-  value = data["value"]["IN_TEMP"][0]
-  topic = "stationsensors/stationsensors_MAYA/tempreture" if (ARGV[0] == "Maya")
-  topic = "stationsensors/stationsensors_KAMEOKA/tempreture" if (ARGV[0] == "Kameoka")
-  mqtt_publish(host, port, topic, value) if (topic != nil)
+  if (ARGV[0] == "Maya") then
+    value = data["value"]["IN_TEMP"][0]
+    topic = "stationsensors/stationsensors_MAYA/tempreture"
+    mqtt_publish(host, port, topic, value)
 
-  value = data["value"]["HUMB"][0]
-  topic = "stationsensors/stationsensors_MAYA/humidity" if (ARGV[0] == "Maya")
-  topic = "stationsensors/stationsensors_KAMEOKA/humidity" if (ARGV[0] == "Kameoka")
-  mqtt_publish(host, port, topic, value) if (topic != nil)
+    value = data["value"]["HUMB"][0]
+    topic = "stationsensors/stationsensors_MAYA/humidity"
+    mqtt_publish(host, port, topic, value)
+  end
+
+  if (ARGV[0] == "Kameoka") then
+    value = data["value"]["TCA"][0]
+    topic = "stationsensors/stationsensors_KAMEOKA/tempreture"
+    mqtt_publish(host, port, topic, value)
+
+    value = data["value"]["HUMA"][0]
+    topic = "stationsensors/stationsensors_KAMEOKA/humidity"
+    mqtt_publish(host, port, topic, value)
+  end
 
 end
 
