@@ -37,6 +37,22 @@ begin
   data["pressure"] = pressure
 
   save_sensordata(data, dir)
+
+  # MQTT publish
+  host = "festival.ckp.jp"
+#  host = "test.mosquitto.org"
+  port = 1883
+  value = data["pressure"]
+  if (ARGV[0] == "Maya") then
+    topic = "stationsensors/stationsensors_MAYA/barometer"
+    mqtt_publish(host, port, topic, value)
+  end
+
+  if (ARGV[0] == "Kameoka") then
+    topic = "stationsensors/stationsensors_KAMEOKA/barometer"
+    mqtt_publish(host, port, topic, value)
+  end
+
 rescue
 end  
 
