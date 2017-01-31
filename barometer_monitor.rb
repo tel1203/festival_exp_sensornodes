@@ -26,14 +26,15 @@ check_dir(dir)
 
 # Read data
 result = Sensor_barometer::readdata()
-temprature, pressure = result.split(" ")
+temperature, pressure = result.split(" ")
 
 begin
   data = Hash.new
   data["type"] = "barometer"
   data["location"] = ARGV[0]
   data["measured_at"] = Time.now.to_i
-  data["temprature"] = temprature
+  data["temprature"] = temperature
+  data["temperature"] = temperature
   data["pressure"] = pressure
 
   save_sensordata(data, dir)
