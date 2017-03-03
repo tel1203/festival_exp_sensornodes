@@ -90,6 +90,7 @@ if (values.size > 0) then
 #  host = "test.mosquitto.org"
   port = 1883
   if (ARGV[0] == "Maya") then
+    # Old topic
     value = data["value"]["IN_TEMP"][0]
     topic = "stationsensors/stationsensors_MAYA/temperature"
     mqtt_publish(host, port, topic, value)
@@ -97,15 +98,34 @@ if (values.size > 0) then
     value = data["value"]["HUMB"][0]
     topic = "stationsensors/stationsensors_MAYA/humidity"
     mqtt_publish(host, port, topic, value)
+
+    # New topic @ 2017/03/03
+    value = data["value"]["IN_TEMP"][0]
+    topic = "stationsensors/stationsensors_hyogo001/temperature"
+    mqtt_publish(host, port, topic, value)
+
+    value = data["value"]["HUMB"][0]
+    topic = "stationsensors/stationsensors_hyogo001/humidity"
+    mqtt_publish(host, port, topic, value)
   end
 
   if (ARGV[0] == "Kameoka") then
+    # Old topic
     value = data["value"]["TCA"][0]
     topic = "stationsensors/stationsensors_KAMEOKA/temperature"
     mqtt_publish(host, port, topic, value)
 
     value = data["value"]["HUMA"][0]
     topic = "stationsensors/stationsensors_KAMEOKA/humidity"
+    mqtt_publish(host, port, topic, value)
+
+    # New topic @ 2017/03/03
+    value = data["value"]["TCA"][0]
+    topic = "stationsensors/stationsensors_kyoto001/temperature"
+    mqtt_publish(host, port, topic, value)
+
+    value = data["value"]["HUMA"][0]
+    topic = "stationsensors/stationsensors_kyoto001/humidity"
     mqtt_publish(host, port, topic, value)
   end
 
