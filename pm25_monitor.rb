@@ -36,12 +36,20 @@ begin
   port = 1883
   value = data["value"]
   if (ARGV[1] == "Maya") then
+    # Old topic
     topic = "stationsensors/stationsensors_MAYA/pm25"
+    mqtt_publish(host, port, topic, value)
+    # New topic @ 2017/03/03
+    topic = "stationsensors/stationsensors_hyogo001/pm25"
     mqtt_publish(host, port, topic, value)
   end
 
   if (ARGV[1] == "Kameoka") then
+    # Old topic
     topic = "stationsensors/stationsensors_KAMEOKA/pm25"
+    mqtt_publish(host, port, topic, value)
+    # New topic @ 2017/03/03
+    topic = "stationsensors/stationsensors_kyoto001/pm25"
     mqtt_publish(host, port, topic, value)
   end
 
