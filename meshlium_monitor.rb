@@ -91,7 +91,7 @@ if (values.size > 0) then
   port = 1883
   if (ARGV[0] == "Maya") then
     value = data["value"]["IN_TEMP"][0]
-    topic = "stationsensors/stationsensors_MAYA/tempreture"
+    topic = "stationsensors/stationsensors_MAYA/temperature"
     mqtt_publish(host, port, topic, value)
 
     value = data["value"]["HUMB"][0]
@@ -101,7 +101,7 @@ if (values.size > 0) then
 
   if (ARGV[0] == "Kameoka") then
     value = data["value"]["TCA"][0]
-    topic = "stationsensors/stationsensors_KAMEOKA/tempreture"
+    topic = "stationsensors/stationsensors_KAMEOKA/temperature"
     mqtt_publish(host, port, topic, value)
 
     value = data["value"]["HUMA"][0]
