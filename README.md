@@ -1,6 +1,7 @@
 # festival_exp_sensornodes
 
 - node1
+ruby pollen_monitor.rb 192.168.101.2 60 Osaka001 /run/shm/sensor festival.ckp.jp 1883 stationsensors/stationsensors_osaka001/pollen
 
 - node2: pm2.5
 ruby pm25_monitor.rb [IP Addres] [Location] [Data Dir]
