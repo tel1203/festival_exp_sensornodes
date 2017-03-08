@@ -11,11 +11,13 @@ ex: ruby pm25_monitor.rb 192.168.101.4 Maya /run/shm/sensor
 ruby barometer_monitor.rb [Location] [Data Dir]
 ex: ruby barometer_monitor.rb Maya /run/shm/sensor
 
-PYTHONPATH=/home/pi/GrovePi/Software/Python/grove_barometer_sensors/barometric_sensor_bmp180/ python festival_exp_sensornodes/barometer_read.py
+PYTHONPATH=/home/pi/GrovePi/Software/Python/grove_barometer_sensors/barometric_sensor_bmp180/ python barometer_read.py
 
 - node4: accelerometer
 ruby accelerometer_monitor.rb [Location] [Data Dir]
 ex: ruby accelerometer_monitor.rb Maya /run/shm/sensor
+
+PYTHONPATH=/home/pi/GrovePi/Software/Python/grove_accelerometer_16g/ python accelerometer_read.py
 
 - node7
 ruby meshlium_monitor.rb [Location] [Data Dir] [Meshlium IP Addr] [DB user] [DB pw] [DB name]
