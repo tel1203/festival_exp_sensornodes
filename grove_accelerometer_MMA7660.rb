@@ -2,9 +2,7 @@
 # accelerometer_monitor.rb : getting measurement data about accelerometer from grovepi sensor
 #
 # Usage:
-#   $ ruby accelerometer_monitor.rb Kameoka /run/shm/sensor
-#   $ ruby accelerometer_monitor.rb Maya    /run/shm/sensor
-#   $ ruby accelerometer_monitor.rb Osaka001 /run/shm/sensor
+#   $ ruby grove_accelerometer_MMA7660.rb Osaka001 /run/shm/sensor
 #
 
 require "./lib_sensornode.rb"
@@ -12,7 +10,7 @@ STDOUT.sync = true
 
 class Sensor_accelerometer
   def Sensor_accelerometer::readdata()
-    result = `cd /home/pi/accelerometer/ && python read_accelerometer.py`
+    result = `cd /home/pi/festival_exp_sensornodes && PYTHONPATH=/home/pi/GrovePi/Software/Python python grove_accelerometer_MMA7660.py`
     return (result.strip)
   end
 end
@@ -27,6 +25,7 @@ check_dir(dir)
 
 # Read data
 result = Sensor_accelerometer::readdata()
+p result
 
 values = Array.new
 result.each_line do |line|
